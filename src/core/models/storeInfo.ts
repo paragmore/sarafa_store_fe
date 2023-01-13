@@ -16,6 +16,7 @@ export interface Catalog {
 }
 
 export interface Item {
+  storeId: string;
   id: string;
   name: string;
   desc: string;

@@ -105,7 +105,8 @@ export const Body = () => {
       <WelcomeTitle>Welcome to {storeInfo.name}</WelcomeTitle>
       <Carousel
         imagesUrl={[
-          "https://parkofideas.com/goldish/demo1/wp-content/uploads/2021/09/goldish-1910574079.jpg",
+          "https://s3.us-west-2.amazonaws.com/pics.angara.com/blogs/jil-magazine/wp-content/uploads/2021/02/03043742/What-is-the-best-gift-for-Valentines-Day-1200x438.jpg",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_6r7aBrrJ_6GDqYQ5PZHRMs1SUbz3mStrHEwbNr5lTxIys9RbZ3NoUJyC_zwzw9F3sjk&usqp=CAU"
         ]}
       />
       <CategoryTitleContainer>
