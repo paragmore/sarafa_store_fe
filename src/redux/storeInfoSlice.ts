@@ -6,7 +6,7 @@ const initialState: StoreInfoState = {
   name: "",
   logoUrl: "",
   catalogs: [],
-  items:[],
+  items: [],
   sC: [],
 };
 export const storeInfoSlice = createSlice({
@@ -19,12 +19,16 @@ export const storeInfoSlice = createSlice({
     addStoreInfo: (state, action: PayloadAction<StoreInfoState>) => {
       return (state = action.payload);
     },
-    addAllItems: (state, action: PayloadAction<Product[]>) =>{
+    addStoreId: (state, action: PayloadAction<string>) => {
+      state.id = action.payload;
+    },
+    addAllItems: (state, action: PayloadAction<Product[]>) => {
       state.items = action.payload;
-    }
+    },
   },
 });
 
-export const { clearStoreInfo, addStoreInfo, addAllItems } = storeInfoSlice.actions;
+export const { clearStoreInfo, addStoreInfo, addAllItems, addStoreId } =
+  storeInfoSlice.actions;
 
 export default storeInfoSlice.reducer;

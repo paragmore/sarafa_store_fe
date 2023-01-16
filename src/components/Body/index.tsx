@@ -8,6 +8,7 @@ import { Product } from "../../core/models/storeInfo";
 import { TitleLarge, TitleXlarge } from "../../core/themes/Typography";
 import { StoreRepo } from "../../repos/StoreRepo";
 import { useAppSelector } from "../../store";
+import { Stories } from "../Stories";
 import { CatalogProductList } from "./CatalogProductList";
 
 export const WelcomeTitle = styled(TitleXlarge)`
@@ -106,9 +107,7 @@ export const Body = () => {
     <BodyContainer>
       {/* <WelcomeTitle>Welcome to {storeInfo.name}</WelcomeTitle> */}
       <CategoriesContainer>
-        {categories.map((category, index) => (
-          <StoryCard key={index} {...category} />
-        ))}
+        <Stories categories={categories} />
       </CategoriesContainer>
       <Carousel
         imagesUrl={[
@@ -120,7 +119,7 @@ export const Body = () => {
         <TitleLarge>Shop By Category</TitleLarge>
       </CategoryTitleContainer>
       <CategoriesContainer>
-      {categories.map((category, index) => (
+        {categories.map((category, index) => (
           <CategoryCard key={index} {...category} />
         ))}
       </CategoriesContainer>

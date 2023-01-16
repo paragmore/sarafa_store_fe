@@ -32,6 +32,9 @@ export const CatalogProductList: React.FC<{ catalogName: string }> = (
   const [catalogProducts, setCatalogProducts] = useState<Product[]>([]);
   const [isProductsLoading, setIsProductsLoading] = useState(false);
   useEffect(() => {
+    if(!id){
+      return
+    }
     getProducts();
   }, [catalogName, id]);
 

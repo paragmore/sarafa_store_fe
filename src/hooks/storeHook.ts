@@ -4,6 +4,7 @@ import { StoreInfoState } from "../core/models/storeInfo";
 import {
   addStoreInfo,
   addAllItems,
+  addStoreId,
   clearStoreInfo,
 } from "../redux/storeInfoSlice";
 
@@ -23,10 +24,14 @@ export function useStoreInfo() {
   async function clearStoreInfoH() {
     dispatch(clearStoreInfo());
   }
+  async function addStoreIdH(storeId: string) {
+    dispatch(addStoreId(storeId));
+  }
 
   return {
     storeInfo: state,
     addStoreInfoH,
-    clearStoreInfoH
+    clearStoreInfoH,
+    addStoreIdH
   };
 }

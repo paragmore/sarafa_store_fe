@@ -19,13 +19,15 @@ import { StoreRepo } from "./repos/StoreRepo";
 import { useAppSelector } from "./store";
 
 function App() {
-  const { storeId } = useParams();
+  // const { storeId } = useParams();
+  const storeId = 'cnzH4PCuSwfnYHS9l4OJhyt1rXE2'
   const location= window.location.origin
   const storeRepo = new StoreRepo();
-  const { addStoreInfoH } = useStoreInfo();
+  const { addStoreInfoH, addStoreIdH } = useStoreInfo();
   useEffect(() => {
     console.log('hi', location)
     if (storeId) {
+      addStoreIdH(storeId)
       storeRepo.getStoreInfo(storeId).then((data) => {
         data && addStoreInfoH(data);
       });

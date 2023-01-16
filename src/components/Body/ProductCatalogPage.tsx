@@ -1,5 +1,11 @@
+import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { ProductCard } from "../../core/components/ProductCard";
+import { useParams } from "react-router-dom";
+import { BodyContainer } from ".";
+import {
+  ProductCard,
+  ProductCardShimmer,
+} from "../../core/components/ProductCard";
 import { Product } from "../../core/models/storeInfo";
 import { useStoreInfo } from "../../hooks/storeHook";
 import { ProductRepo } from "../../repos/ProductRepo";
@@ -7,19 +13,25 @@ import { ProductRepo } from "../../repos/ProductRepo";
 export const ProductCatalogPage: React.FC<{ catalogName: string }> = (
   props
 ) => {
+  const { category } = useParams();
   const { catalogName } = props;
   const { storeInfo } = useStoreInfo();
   const { id } = storeInfo;
   const productRepo = new ProductRepo();
   const [isProductsLoading, setIsProductsLoading] = useState(false);
   const [catalogProducts, setCatalogProducts] = useState<Product[]>([]);
-  useEffect(() => {}, [catalogName, id]);
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    getProducts();
+  }, [category, id]);
 
   const getProducts = async () => {
     setIsProductsLoading(true);
     const products = await productRepo.getStoreProducts(id, {
       page: "1",
-      sC: catalogName,
+      sC: category,
     });
     setIsProductsLoading(false);
     if (products) {
@@ -28,13 +40,21 @@ export const ProductCatalogPage: React.FC<{ catalogName: string }> = (
   };
 
   return (
-    <div style={{ marginTop: "70px" }}>
-      {catalogName}
-      <div>
-        {catalogProducts.map((catalogProduct) => (
-          <ProductCard key={catalogProduct.id} {...catalogProduct} />
-        ))}
+    <BodyContainer>
+      <div style={{ marginTop: "70px" }}>
+        {category}
+        <Grid wrap="wrap" container style={{ width: "100%" }}>
+          {catalogProducts.map((catalogProduct) => (
+            <ProductCard key={catalogProduct.id} {...catalogProduct} />
+          ))}
+        </Grid>
+        {isProductsLoading && (
+          <>
+            <ProductCardShimmer />
+            <ProductCardShimmer />
+          </>
+        )}
       </div>
-    </div>
+    </BodyContainer>
   );
 };
