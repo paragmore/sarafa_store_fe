@@ -4,7 +4,7 @@ export interface StoreInfoState {
   catalogs: Catalog[];
   logoUrl: string;
   sC: string[];
-  items: Item[]
+  items: Product[]
 }
 
 export interface Catalog {
@@ -12,10 +12,10 @@ export interface Catalog {
   name: string;
   desc: string;
   images: string[];
-  items: Item[];
+  items: Product[];
 }
 
-export interface Item {
+export interface Product {
   storeId: string;
   id: string;
   name: string;

@@ -9,12 +9,12 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { Item, StoreInfoState } from "../core/models/storeInfo";
+import { Product, StoreInfoState } from "../core/models/storeInfo";
 import { Category } from "../components/Body";
 
 export class StoreRepo {
   getStoreInfo = async (storeUrl: string) => {
-    const docRef = doc(firebase.firestore(), "stores", storeUrl);
+    const docRef = doc(firebase.firestore(), "store", storeUrl);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       console.log("Paragloogged", docSnap.data());
@@ -41,20 +41,20 @@ export class StoreRepo {
     return categories;
   };
 
-  getAllItems = async (storeUrl: string) => {
-    let items: Item[] = [];
-    try {
-      const q = query(
-        collection(firebase.firestore(), "stores", storeUrl, "items"),
-        orderBy("views")
-      );
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        items.push(doc.data() as Item);
-      });
-    } catch {}
+  // getAllItems = async (storeUrl: string) => {
+  //   let items: Item[] = [];
+  //   try {
+  //     const q = query(
+  //       collection(firebase.firestore(), "stores", storeUrl, "items"),
+  //       orderBy("views")
+  //     );
+  //     const querySnapshot = await getDocs(q);
+  //     querySnapshot.forEach((doc) => {
+  //       // doc.data() is never undefined for query doc snapshots
+  //       items.push(doc.data() as Item);
+  //     });
+  //   } catch {}
 
-    return items;
-  };
+  //   return items;
+  // };
 }

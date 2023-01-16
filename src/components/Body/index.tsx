@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { Carousel } from "../../core/components/Carousel";
 import { CategoryCard } from "../../core/components/CategoryCard";
 import { ProductCard } from "../../core/components/ProductCard";
-import { Item } from "../../core/models/storeInfo";
+import { StoryCard } from "../../core/components/StoryCard";
+import { Product } from "../../core/models/storeInfo";
 import { TitleLarge, TitleXlarge } from "../../core/themes/Typography";
 import { StoreRepo } from "../../repos/StoreRepo";
 import { useAppSelector } from "../../store";
+import { CatalogProductList } from "./CatalogProductList";
 
 export const WelcomeTitle = styled(TitleXlarge)`
   color: ${(props) => props.theme.colors.text.secondary};
@@ -71,15 +73,15 @@ export interface Category {
 export const Body = () => {
   const storeInfo = useAppSelector((state) => state.storeInfo);
   const [categories, setcategories] = useState<Category[]>([]);
-  const [filteredProducts, setfilteredProducts] = useState<Map<string, Item[]>>(
-    new Map()
-  );
+  const [filteredProducts, setfilteredProducts] = useState<
+    Map<string, Product[]>
+  >(new Map());
   const storeRepo = React.useMemo(() => new StoreRepo(), []);
 
   useEffect(() => {
     storeRepo.getSubCategories().then((data) => {
       console.log(data);
-      setcategories(data.filter((item) => storeInfo.sC.includes(item.name)));
+      setcategories(data);
     });
   }, [storeInfo.sC]);
 
@@ -102,33 +104,27 @@ export const Body = () => {
 
   return (
     <BodyContainer>
-      <WelcomeTitle>Welcome to {storeInfo.name}</WelcomeTitle>
+      {/* <WelcomeTitle>Welcome to {storeInfo.name}</WelcomeTitle> */}
+      <CategoriesContainer>
+        {categories.map((category, index) => (
+          <StoryCard key={index} {...category} />
+        ))}
+      </CategoriesContainer>
       <Carousel
         imagesUrl={[
           "https://s3.us-west-2.amazonaws.com/pics.angara.com/blogs/jil-magazine/wp-content/uploads/2021/02/03043742/What-is-the-best-gift-for-Valentines-Day-1200x438.jpg",
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_6r7aBrrJ_6GDqYQ5PZHRMs1SUbz3mStrHEwbNr5lTxIys9RbZ3NoUJyC_zwzw9F3sjk&usqp=CAU"
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_6r7aBrrJ_6GDqYQ5PZHRMs1SUbz3mStrHEwbNr5lTxIys9RbZ3NoUJyC_zwzw9F3sjk&usqp=CAU",
         ]}
       />
       <CategoryTitleContainer>
         <TitleLarge>Shop By Category</TitleLarge>
       </CategoryTitleContainer>
       <CategoriesContainer>
-        {categories.map((category, index) => (
+      {categories.map((category, index) => (
           <CategoryCard key={index} {...category} />
         ))}
       </CategoriesContainer>
-      {Array.from(filteredProducts.keys()).map((key) => (
-        <>
-          <SectionTitleContainer>
-            <TitleLarge>{key}</TitleLarge>
-          </SectionTitleContainer>
-          <ProductsContainer>
-            {Array.from(filteredProducts.get(key) || []).map((item) => (
-              <ProductCard key={item.id} {...item} />
-            ))}
-          </ProductsContainer>
-        </>
-      ))}
+      <CatalogProductList catalogName="ring" />
     </BodyContainer>
   );
 };

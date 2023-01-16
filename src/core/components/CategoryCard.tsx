@@ -3,6 +3,20 @@ import styled from "styled-components";
 import { TitleFour } from "../themes/Typography";
 
 export const CategoryImageContainer = styled.div`
+  border-radius: 10px;
+  width: 120px;
+  height: 70px;
+  background-image: radial-gradient(
+    ${(props) => props.theme.colors.brand.primary.main},
+    ${(props) => props.theme.colors.brand.primary.light1},
+    ${(props) => props.theme.colors.brand.primary.light2}
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StoryImageContainer = styled.div`
   border-radius: 100%;
   width: 90px;
   height: 90px;

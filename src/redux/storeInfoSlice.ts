@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Item, StoreInfoState } from "../core/models/storeInfo";
+import { Product, StoreInfoState } from "../core/models/storeInfo";
 
 const initialState: StoreInfoState = {
   id: "0",
@@ -19,7 +19,7 @@ export const storeInfoSlice = createSlice({
     addStoreInfo: (state, action: PayloadAction<StoreInfoState>) => {
       return (state = action.payload);
     },
-    addAllItems: (state, action: PayloadAction<Item[]>) =>{
+    addAllItems: (state, action: PayloadAction<Product[]>) =>{
       state.items = action.payload;
     }
   },
