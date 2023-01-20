@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import SwipeableViews from "react-swipeable-views";
 import { StoryCard } from "../../core/components/StoryCard";
 
 interface StoryProps {
