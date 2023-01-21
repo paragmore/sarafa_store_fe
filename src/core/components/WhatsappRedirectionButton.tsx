@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as WhatsAppSVG } from './../../core/icons/svgs/whatsappIcon.svg';
+// import { ReactComponent as WhatsAppSVG } from './../../core/icons/svgs/whatsappIcon.svg';
 
 const WhatsappRedirectionButtonContainer = styled.button`
   position: fixed;
@@ -24,7 +24,7 @@ export const WhatsappRedirectionButton = () => {
 
   return (
     <WhatsappRedirectionButtonContainer onClick={handleClick}>
-      <WhatsAppSVG width={35} height={35}/>
+      {/* <WhatsAppSVG width={35} height={35}/> */}
     </WhatsappRedirectionButtonContainer>
   );
 };

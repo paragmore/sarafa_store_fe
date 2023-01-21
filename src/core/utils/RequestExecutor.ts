@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 export const getApiBaseUrl = () => {
-  return process.env.isProd ? "" : "http://192.168.1.106:8000/";
+  return process.env.isProd ? "https://sarafa.onrender.com/" : "https://sarafa.onrender.com/";
 };
 export enum HTTP_METHODS {
   GET = "GET",

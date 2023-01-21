@@ -13,7 +13,7 @@ export const LoggedInPage = () => {
     <>
       <div>
         <Body />
-        <WhatsappRedirectionButton />
+        {/* <WhatsappRedirectionButton /> */}
       </div>
     </>
   );
