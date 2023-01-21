@@ -14,7 +14,7 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { DEFAULT_THEME } from "./core/themes/DefaultTheme";
 import { useStoreInfo } from "./hooks/storeHook";
-import { LoggedInPage } from "./LoggedInPage";
+import { HomePage } from "./HomePage";
 import { StoreRepo } from "./repos/StoreRepo";
 import { useAppSelector } from "./store";
 
@@ -41,15 +41,15 @@ function App() {
       <Header />
       <Router>
         <Routes>
+          <Route path="/home" element={<HomePage />} />
           <Route
-            path="/:storeId/item/:product"
+            path="/item/:product"
             element={<ProductDetailsPage />}
           />
           <Route
-            path="/:storeId/:category"
+            path="/catalog/:category"
             element={<ProductCatalogPage catalogName={"ring"} />}
           />
-          <Route path="/:storeId" element={<LoggedInPage />} />
         </Routes>
       </Router>
       <Footer />

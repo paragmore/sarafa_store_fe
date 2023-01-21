@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product, StoreInfoState } from "../core/models/storeInfo";
 
 const initialState: StoreInfoState = {
-  id: "0",
+  id: "",
   name: "",
   logoUrl: "",
   catalogs: [],

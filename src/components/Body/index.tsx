@@ -69,6 +69,7 @@ export const SectionTitleContainer = styled.div`
 export interface Category {
   name: string;
   image: string;
+  id: string;
 }
 
 export const Body = () => {
@@ -123,7 +124,9 @@ export const Body = () => {
           <CategoryCard key={index} {...category} />
         ))}
       </CategoriesContainer>
-      <CatalogProductList catalogName="ring" />
+      {categories.map((category, index) => (
+        <CatalogProductList key={index} catalogId={category.id} catalogName={category.name} />
+      ))}
     </BodyContainer>
   );
 };

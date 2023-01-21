@@ -8,7 +8,7 @@ import { addAllItems, addStoreInfo } from "./redux/storeInfoSlice";
 import { StoreRepo } from "./repos/StoreRepo";
 import { useAppDispatch } from "./store";
 
-export const LoggedInPage = () => {
+export const HomePage = () => {
   return (
     <>
       <div>
