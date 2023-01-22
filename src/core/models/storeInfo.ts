@@ -4,7 +4,16 @@ export interface StoreInfoState {
   catalogs: Catalog[];
   logoUrl: string;
   sC: string[];
-  items: Product[]
+  items: Product[];
+  address: Address;
+  phoneNumber: string;
+}
+
+export interface Address{
+  firstLine:string;
+  city: string;
+  state: string;
+  pinCode: string
 }
 
 export interface Catalog {

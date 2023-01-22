@@ -56,4 +56,21 @@ export class ProductRepo {
       throw new Error(`Request failed: ${error}`);
     }
   };
+
+  getProductById = async (productId: string) => {
+    const baseUrl = getApiBaseUrl() + `product/single/${productId}`;
+    try {
+      const response = await requestExecutor(
+        baseUrl,
+        {
+          method: HTTP_METHODS.GET,
+        },
+        3
+      );
+      console.log(response);
+      return response?.body;
+    } catch (error) {
+      throw new Error(`Request failed: ${error}`);
+    }
+  };
 }

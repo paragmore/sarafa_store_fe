@@ -1,4 +1,5 @@
 import React from "react";
+import { Shimmer } from "react-shimmer";
 import styled from "styled-components";
 
 export const IconContainer = styled.div`
@@ -14,13 +15,16 @@ export const IconContainer = styled.div`
 export const Icon: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
   return (
     <IconContainer>
-      <img
-        style={{ borderRadius: 10 }}
-        width={50}
-        height={50}
-        src={imageUrl}
-        alt=""
-      />
+      {imageUrl && (
+        <img
+          style={{ borderRadius: 10 }}
+          width={50}
+          height={50}
+          src={imageUrl}
+          alt=""
+        />
+      )}
+      {!imageUrl && <Shimmer width={50} height={50} />}
     </IconContainer>
   );
 };
