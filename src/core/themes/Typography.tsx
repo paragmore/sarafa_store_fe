@@ -28,6 +28,8 @@ export const TitleSmall = Styled.p`
   font-weight: ${(props) => props.theme.fonts.titleSmall.fontWeight};
   font-size: ${(props) => addPixels(props.theme.fonts.titleSmall.fontSize)};
   line-height: ${(props) => addPixels(props.theme.fonts.titleSmall.lineHeight)};
+  margin:5px
+
 `;
 
 export const TitleMedium = Styled.p`
@@ -37,6 +39,8 @@ export const TitleMedium = Styled.p`
   font-size: ${(props) => addPixels(props.theme.fonts.titleMedium.fontSize)};
   line-height: ${(props) =>
     addPixels(props.theme.fonts.titleMedium.lineHeight)};
+      margin:5px
+
 `;
 
 export const TitleRegular = Styled.p`
@@ -46,6 +50,8 @@ export const TitleRegular = Styled.p`
   font-size: ${(props) => addPixels(props.theme.fonts.titleRegular.fontSize)};
   line-height: ${(props) =>
     addPixels(props.theme.fonts.titleRegular.lineHeight)};
+      margin:5px
+
 `;
 
 export const TitleOne = Styled.p`
@@ -98,6 +104,7 @@ export const BodyRegular = Styled.p`
   font-size: ${(props) => addPixels(props.theme.fonts.bodyRegular.fontSize)};
   line-height: ${(props) =>
     addPixels(props.theme.fonts.bodyRegular.lineHeight)};
+    margin:5px;
 `;
 
 export const BodySmall = Styled.p`

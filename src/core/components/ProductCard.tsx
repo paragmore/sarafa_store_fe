@@ -4,6 +4,7 @@ import { Caption, CaptionBold, TitleFour } from "../themes/Typography";
 import { Image, Shimmer } from "react-shimmer";
 import { Product } from "../models/storeInfo";
 import { Grid } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
 export const ProductCardContainer = styled.div`
   background-color: ${(props) => props.theme.colors.gray.white};
@@ -44,13 +45,17 @@ export const ProductCard: React.FC<Product> = ({
   likes,
 }) => {
   const [isLoading, setisLoading] = useState(false);
+  const navigate = useNavigate();
+  const onClickProduct = () => {
+    navigate(`/product/${id}`);
+  };
   return (
     <>
       <Grid alignItems="center" item lg={3} md={4} sm={4} xs={6}>
         {isLoading ? (
           <ProductCardShimmer />
         ) : (
-          <ProductCardContainer>
+          <ProductCardContainer onClick={onClickProduct}>
             <img
               style={{
                 width: "100%",

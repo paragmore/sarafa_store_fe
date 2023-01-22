@@ -20,23 +20,60 @@ export const ProductCatalogPage: React.FC<{ catalogName: string }> = (
   const productRepo = new ProductRepo();
   const [isProductsLoading, setIsProductsLoading] = useState(false);
   const [catalogProducts, setCatalogProducts] = useState<Product[]>([]);
-  useEffect(() => {
-    if (!id) {
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
+  // useEffect(() => {
+  //   if (!id || id === "0" || !category) {
+  //     return;
+  //   }
+  //   console.log(id, "cate", category);
+  //   getProducts();
+  // }, [category, id]);
+
+  const getProducts = async (page: number) => {
+    setIsProductsLoading(true);
+    if (!id || !category) {
       return;
     }
-    getProducts();
-  }, [category, id]);
-
-  const getProducts = async () => {
-    setIsProductsLoading(true);
     const products = await productRepo.getStoreProducts(id, {
-      page: "1",
+      page: page.toString(),
       sC: category,
     });
     setIsProductsLoading(false);
     if (products) {
-      setCatalogProducts(products);
+      return products;
     }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    async function fetchStoreProducts() {
+      const responseProducts = await getProducts(page);
+      if(!responseProducts){
+        return
+      }
+      console.log('responseProducts',responseProducts)
+      setCatalogProducts((prevProducts) => [...prevProducts, ...responseProducts]);
+      setHasMore(responseProducts.length > 0);
+    }
+
+    fetchStoreProducts();
+  }, [page, category, id]);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.offsetHeight
+    ) {
+      return;
+    }
+
+    setPage((prevPage) => prevPage + 1);
   };
 
   return (
@@ -47,6 +84,7 @@ export const ProductCatalogPage: React.FC<{ catalogName: string }> = (
           {catalogProducts.map((catalogProduct) => (
             <ProductCard key={catalogProduct.id} {...catalogProduct} />
           ))}
+          {!hasMore && <div>No more products</div>}
         </Grid>
         {isProductsLoading && (
           <>

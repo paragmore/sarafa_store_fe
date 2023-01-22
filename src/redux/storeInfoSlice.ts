@@ -1,13 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product, StoreInfoState } from "../core/models/storeInfo";
+import { Address, Product, StoreInfoState } from "../core/models/storeInfo";
 
+const addressInitailState: Address = {
+  firstLine: "",
+  city: "",
+  state: "",
+  pinCode: ""
+}
 const initialState: StoreInfoState = {
-  id: "0",
+  id: "",
   name: "",
   logoUrl: "",
   catalogs: [],
   items: [],
   sC: [],
+  address: addressInitailState,
+  phoneNumber: ""
 };
 export const storeInfoSlice = createSlice({
   name: "storeInfo",
