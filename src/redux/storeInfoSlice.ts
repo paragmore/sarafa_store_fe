@@ -15,7 +15,8 @@ const initialState: StoreInfoState = {
   items: [],
   sC: [],
   address: addressInitailState,
-  phoneNumber: ""
+  phoneNumber: "",
+  whatsappPhoneNumber:""
 };
 export const storeInfoSlice = createSlice({
   name: "storeInfo",

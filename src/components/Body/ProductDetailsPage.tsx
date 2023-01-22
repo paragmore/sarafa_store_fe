@@ -14,12 +14,14 @@ import {
   TitleSmall,
 } from "../../core/themes/Typography";
 import { capitalizeFirstLetter } from "../../core/utils/StringHelper";
+import { useStoreInfo } from "../../hooks/storeHook";
 import { ProductRepo } from "../../repos/ProductRepo";
 
 export const ProductDetailsPage: React.FC = (props) => {
   const [currentProduct, setCurrentProduct] = useState<Product | undefined>(
     undefined
   );
+  const {storeInfo} = useStoreInfo()
   const [isLoading, setIsLoading] = useState(false);
   const { product } = useParams();
   const productRepo = new ProductRepo();
@@ -35,6 +37,14 @@ export const ProductDetailsPage: React.FC = (props) => {
     }
     fetchProduct(product);
   }, [product]);
+
+  const handleEnquireClick = () => {
+    const productLink = window.location.href
+    const message =
+      `Hello, can I get some more Information about this product? \n\n ${productLink}`;
+    const phoneNumber = "1234567890";
+    window.location.href = `https://api.whatsapp.com/send?phone=${storeInfo?.whatsappPhoneNumber}&text=${message}`;
+  };
 
   return (
     <BodyContainer>
@@ -53,7 +63,7 @@ export const ProductDetailsPage: React.FC = (props) => {
               alignItems: "center",
               marginLeft: "10px",
               marginRight: "10px",
-              marginTop:'10px'
+              marginTop: "10px",
             }}
           >
             {currentProduct?.name && (
@@ -70,7 +80,11 @@ export const ProductDetailsPage: React.FC = (props) => {
               </div>
             )}
             <div style={{ height: "32px" }}>
-              <Button buttonSize="ultra-small" buttonStyle="primary-outline">
+              <Button
+                click={handleEnquireClick}
+                buttonSize="ultra-small"
+                buttonStyle="primary-outline"
+              >
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   {" "}
                   Enquire

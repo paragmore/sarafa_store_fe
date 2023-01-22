@@ -7,6 +7,7 @@ export interface StoreInfoState {
   items: Product[];
   address: Address;
   phoneNumber: string;
+  whatsappPhoneNumber:string;
 }
 
 export interface Address{
