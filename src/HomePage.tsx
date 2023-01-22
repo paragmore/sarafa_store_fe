@@ -13,6 +13,7 @@ export const HomePage = () => {
     <>
       <div>
         <Body />
+        
         {/* <WhatsappRedirectionButton /> */}
       </div>
     </>
