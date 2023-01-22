@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Category } from "../../components/Body";
 import { TitleFour } from "../themes/Typography";
 
 export const CategoryImageContainer = styled.div`
@@ -37,12 +39,18 @@ export const CategoryContainer = styled.div`
   padding-left: 20px;
   padding-right: 20px;
 `;
-export const CategoryCard: React.FC<{
-  name: string;
-  image: string;
-}> = ({ name, image }) => {
+export const CategoryCard: React.FC<Category> = (props) => {
+  const { id, image, name } = props;
+  const navigate = useNavigate();
+
+  const onCardClicked = () => {
+    if(!id){
+      return
+    }
+    navigate(`/catalog/${id}`);
+  };
   return (
-    <CategoryContainer>
+    <CategoryContainer onClick={onCardClicked}>
       <CategoryImageContainer>
         <img style={{ width: 100 }} src={image} alt="" />
       </CategoryImageContainer>

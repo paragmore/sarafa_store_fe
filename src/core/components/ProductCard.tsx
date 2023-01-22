@@ -51,7 +51,7 @@ export const ProductCard: React.FC<Product> = ({
   };
   return (
     <>
-      <Grid alignItems="center" item lg={3} md={4} sm={4} xs={6}>
+      <Grid item lg={3} md={4} sm={4} xs={6}>
         {isLoading ? (
           <ProductCardShimmer />
         ) : (

@@ -21,8 +21,8 @@ export const Carousel: React.FC<{ imagesUrl: string[] }> = ({ imagesUrl }) => {
         showArrows={false}
         showStatus={false}
       >
-        {imagesUrl.map((imageUrl) => (
-          <CarouselImage src={imageUrl} alt="" />
+        {imagesUrl.map((imageUrl, index) => (
+          <CarouselImage key={index} src={imageUrl} alt="" />
         ))}
       </ReactCarousel>
     </>
