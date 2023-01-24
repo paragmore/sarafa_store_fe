@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { StoryCard } from "../../core/components/StoryCard";
 import { Category } from "../Body";
 import { StoriesPage } from "./StoriesPage";
@@ -9,6 +10,7 @@ interface StoryProps {
 
 export const Stories = (props: StoryProps) => {
   const [stories, setStories] = useState(props.categories);
+  const navigate = useNavigate();
   const [currentStory, setCurrentStory] = useState<string | undefined>(
     undefined
   );
@@ -23,10 +25,14 @@ export const Stories = (props: StoryProps) => {
   //     .then((data) => setStories(data));
   // }, []);
 
+  const onClickStory = (storyId: string) => {
+    navigate("/story", { state: { storyId } });
+  };
+
   return (
     <>
       {props.categories.map((category, index) => (
-        <div onClick={() => setCurrentStory(category?.id)}>
+        <div onClick={() => onClickStory(category?.id)}>
           <StoryCard key={index} {...category} />
         </div>
       ))}

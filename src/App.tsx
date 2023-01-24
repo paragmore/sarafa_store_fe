@@ -43,15 +43,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/home" element={<HomePage />} />
+
           <Route path="/product/:product" element={<ProductDetailsPage />} />
           <Route
             path="/catalog/:category"
             element={<ProductCatalogPage catalogName={"ring"} />}
           />
-          <Route
-            path="/story"
-            element={<StoriesPage />}
-          />
+          <Route path="/story" element={<StoriesPage />} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </Router>
       <Footer />

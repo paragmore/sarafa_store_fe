@@ -1,8 +1,11 @@
 import React from "react";
 import Stories, { WithSeeMore } from "react-insta-stories";
 import { Action, Story } from "react-insta-stories/dist/interfaces";
+import { useLocation, useParams, useRoutes } from "react-router-dom";
 
 export const StoriesPage = () => {
+  const { state } = useLocation();
+  console.log(state)
   return (
     <div style={{ width: "100%", height: "100%", position:'fixed', zIndex:3 }}>
       <Stories
