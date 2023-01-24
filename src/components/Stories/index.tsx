@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { StoryCard } from "../../core/components/StoryCard";
+import { Category } from "../Body";
 import { StoriesPage } from "./StoriesPage";
 
 interface StoryProps {
-  categories: Array<{ name: string; image: string }>;
+  categories: Array<Category>;
 }
 
 export const Stories = (props: StoryProps) => {
   const [stories, setStories] = useState(props.categories);
-  const [currentStory, setCurrentStory] = useState(0);
+  const [currentStory, setCurrentStory] = useState<string | undefined>(
+    undefined
+  );
   const [autoPlay, setAutoPlay] = useState(true);
-
   useEffect(() => {
     console.log("stories", stories);
   }, [stories]);
@@ -24,14 +26,10 @@ export const Stories = (props: StoryProps) => {
   return (
     <>
       {props.categories.map((category, index) => (
-        <div >
+        <div onClick={() => setCurrentStory(category?.id)}>
           <StoryCard key={index} {...category} />
         </div>
       ))}
-      {/* <div style={{position:'fixed', top:0, left:0, zIndex:100}}> 
-
-      <StoriesPage/>
-      </div> */}
     </>
   );
 };

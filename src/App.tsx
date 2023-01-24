@@ -17,17 +17,18 @@ import { useStoreInfo } from "./hooks/storeHook";
 import { HomePage } from "./HomePage";
 import { StoreRepo } from "./repos/StoreRepo";
 import { useAppSelector } from "./store";
+import { StoriesPage } from "./components/Stories/StoriesPage";
 
 function App() {
   // const { storeId } = useParams();
-  const storeId = 'cnzH4PCuSwfnYHS9l4OJhyt1rXE2'
-  const location= window.location.origin
+  const storeId = "cnzH4PCuSwfnYHS9l4OJhyt1rXE2";
+  const location = window.location.origin;
   const storeRepo = new StoreRepo();
   const { addStoreInfoH, addStoreIdH } = useStoreInfo();
   useEffect(() => {
-    console.log('hi', location)
+    console.log("hi", location);
     if (storeId) {
-      addStoreIdH(storeId)
+      addStoreIdH(storeId);
       storeRepo.getStoreInfo(storeId).then((data) => {
         data && addStoreInfoH(data);
       });
@@ -42,13 +43,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/home" element={<HomePage />} />
-          <Route
-            path="/product/:product"
-            element={<ProductDetailsPage />}
-          />
+          <Route path="/product/:product" element={<ProductDetailsPage />} />
           <Route
             path="/catalog/:category"
             element={<ProductCatalogPage catalogName={"ring"} />}
+          />
+          <Route
+            path="/story"
+            element={<StoriesPage />}
           />
         </Routes>
       </Router>
