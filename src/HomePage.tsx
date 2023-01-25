@@ -7,14 +7,14 @@ import { WhatsappRedirectionButton } from "./core/components/WhatsappRedirection
 import { addAllItems, addStoreInfo } from "./redux/storeInfoSlice";
 import { StoreRepo } from "./repos/StoreRepo";
 import { useAppDispatch } from "./store";
+import WhatsAppSVG from './core/icons/svgs/whatsappIcon.svg';
 
 export const HomePage = () => {
   return (
     <>
       <div>
         <Body />
-        
-        {/* <WhatsappRedirectionButton /> */}
+        <WhatsappRedirectionButton />
       </div>
     </>
   );

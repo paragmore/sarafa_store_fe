@@ -6,16 +6,18 @@ import { Product } from "../models/storeInfo";
 import { Grid } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 
-export const ProductCardContainer = styled.div`
+export const ProductCardContainer = styled.div<{ inScrolList?: boolean }>`
   background-color: ${(props) => props.theme.colors.gray.white};
   margin: 7px;
   border-radius: 5px;
-  border-width: 1px;
-  border-color: ${(props) => props.theme.colors.gray.darkGray0};
+  border: 1px solid; 
+  border-color: ${(props) => props.inScrolList ? props.theme.colors.gray.lightGray2: 'transparent'};
   display: flex;
   flex-direction: column;
   padding: 10px;
   flex-grow: 1;
+  min-width: ${(props) => (props.inScrolList ? "145px" : "0px")};
+  min-height: ${(props) => (props.inScrolList ? "210px" : "0px")};
 `;
 
 export const ProductCardShimmer = () => {
@@ -33,17 +35,12 @@ export const ProductCardShimmer = () => {
     </ProductCardContainer>
   );
 };
-export const ProductCard: React.FC<Product> = ({
-  id,
-  images,
-  name,
-  desc,
-  wtRange,
-  gender,
-  sC,
-  views,
-  likes,
-}) => {
+export const ProductCard: React.FC<{
+  product: Product;
+  inScrolList: boolean;
+}> = (props) => {
+  const { inScrolList, product } = props;
+  const { id, images, name, desc, wtRange, gender, sC, views, likes } = product;
   const [isLoading, setisLoading] = useState(false);
   const navigate = useNavigate();
   const onClickProduct = () => {
@@ -55,7 +52,7 @@ export const ProductCard: React.FC<Product> = ({
         {isLoading ? (
           <ProductCardShimmer />
         ) : (
-          <ProductCardContainer onClick={onClickProduct}>
+          <ProductCardContainer inScrolList={inScrolList} onClick={onClickProduct}>
             <img
               style={{
                 width: "100%",

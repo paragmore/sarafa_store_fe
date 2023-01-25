@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Carousel } from "../../core/components/Carousel";
@@ -125,8 +126,38 @@ export const Body = () => {
         ))}
       </CategoriesContainer>
       {categories.map((category, index) => (
-        <CatalogProductList key={index} catalogId={category.id} catalogName={category.name} />
+        <CatalogProductList
+          key={index}
+          catalogId={category.id}
+          catalogName={category.name}
+        />
       ))}
+      <CategoryTitleContainer>
+        <TitleLarge>Trending Products</TitleLarge>
+      </CategoryTitleContainer>
+      <CategoriesContainer>
+        <Grid style={{ width: "100%", display: "flex", flexDirection: "row" }}>
+          {categories.map((category, index) => (
+            <ProductCard
+              inScrolList={true}
+              product={{
+                id: "",
+                storeId: "",
+                desc: "",
+                images: [
+                  "https://nirmalalankar.jewellers.store/_next/image?url=%2Fassets%2Fdashboard%2FDashboardCategoryNECKLACES.png&w=256&q=75",
+                ],
+                wtRange: { max: 1, min: 1 },
+                sC: "",
+                gender: "",
+                views: 0,
+                likes: 0,
+                name: category?.name,
+              }}
+            />
+          ))}
+        </Grid>
+      </CategoriesContainer>
     </BodyContainer>
   );
 };

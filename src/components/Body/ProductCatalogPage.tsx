@@ -82,7 +82,7 @@ export const ProductCatalogPage: React.FC<{ catalogName: string }> = (
         {category}
         <Grid wrap="wrap" container style={{ width: "100%" }}>
           {catalogProducts.map((catalogProduct) => (
-            <ProductCard key={catalogProduct.id} {...catalogProduct} />
+            <ProductCard inScrolList={false} key={catalogProduct.id} product={catalogProduct} />
           ))}
           {!hasMore && <div>No more products</div>}
         </Grid>

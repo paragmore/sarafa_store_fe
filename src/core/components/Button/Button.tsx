@@ -4,7 +4,7 @@ import { ButtonStyled } from "./ButtonStyles";
 import Dots from "react-activity/dist/Dots";
 import "react-activity/dist/Dots.css";
 
-export type ButtonStyle = "primary" | "secondary" | "primary-outline";
+export type ButtonStyle = "primary" | "secondary" | "primary-outline" | "text";
 export type ButtonSize = "large" | "small" | "ultra-small";
 
 export interface ButtonDataProps {

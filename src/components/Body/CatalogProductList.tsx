@@ -75,7 +75,11 @@ export const CatalogProductList: React.FC<{
           </SectionTitleContainer>
           <Grid wrap="wrap" container style={{ width: "100%" }}>
             {catalogProducts.map((catalogProduct) => (
-              <ProductCard key={catalogProduct.id} {...catalogProduct} />
+              <ProductCard
+                inScrolList={false}
+                key={catalogProduct.id}
+                product={catalogProduct}
+              />
             ))}
             {isProductsLoading && (
               <>

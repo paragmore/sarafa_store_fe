@@ -15,7 +15,10 @@ export const ButtonStyled = styled.button<ButtonDataProps>`
     transform: translate(-50%, -50%);
   }
   border: ${(props) => (props.borderWidth || 0) + "px solid"};
-  border-width: ${props => props.buttonStyle === 'primary-outline' ? (props.borderWidth || 1) +'px' : ''};
+  border-width: ${(props) =>
+    props.buttonStyle === "primary-outline"
+      ? (props.borderWidth || 1) + "px"
+      : ""};
   border-color: ${(props) =>
     props.buttonStyle == "primary"
       ? "#731dcf"
@@ -44,20 +47,25 @@ export const ButtonStyled = styled.button<ButtonDataProps>`
       ? "#731dcf"
       : props.buttonStyle == "secondary"
       ? "linear-gradient(90deg, #fdb85e 0%, #fedc8f 70%)"
+      : props.buttonStyle == "text"
+      ? "transparent"
       : "white"};
   border-radius: 8px;
-  padding: ${(props) => props.buttonSize == "large" ? "22px 30px" : "10px 16px"};
+  padding: ${(props) =>
+    props.buttonSize == "large" ? "22px 30px" : "10px 16px"};
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   &:hover {
     background: ${(props) =>
       props.buttonStyle == "primary"
         ? "#731dcf"
         : props.buttonStyle == "secondary"
         ? "linear-gradient(90deg, #fedc8f 0%, #fdb85e 70%)"
+        : props.buttonStyle == "text"
+        ? "transparent"
         : "white"};
   }
 

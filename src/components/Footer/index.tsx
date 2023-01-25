@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import styled, { useTheme } from "styled-components";
+import Button from "../../core/components/Button/Button";
 import {
   BodyRegular,
+  BodySecondary,
   TitleFour,
   TitleThree,
   TitleTwo,
@@ -15,23 +17,29 @@ export const FooterContainer = styled.div`
   flex-direction: column;
   padding: 10px;
   border-top: 1px;
+  min-height: 200px;
 `;
 
 export const Footer = () => {
   const { storeInfo } = useStoreInfo();
   const theme = useTheme();
-  useEffect(() => {}, [storeInfo]);
+  useEffect(() => {
+    console.log('storeInfo',storeInfo)
+  }, [storeInfo]);
   return (
     <>
       <FooterContainer>
         <TitleTwo style={{ padding: 0, margin: 0 }}>{storeInfo.name}</TitleTwo>
-        <BodyRegular>{storeInfo.address?.firstLine}</BodyRegular>
-        <BodyRegular>
+        <BodySecondary>{storeInfo.address?.firstLine}</BodySecondary>
+        <BodySecondary>
           {
-            (storeInfo?.address?.city + ", ",
+            (storeInfo?.address?.city + ", " + 
             storeInfo?.address?.state + "- " + storeInfo?.address?.pinCode)
           }
-        </BodyRegular>
+        </BodySecondary>
+        <Button buttonStyle="text">
+          {storeInfo?.phoneNumber}
+        </Button>
       </FooterContainer>
     </>
   );

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,6 +19,6 @@
       "@icons/*": ["./src/core/icons/svgs/*"]
     }
   },
-  "include": ["src", "src/svg.d.ts"],
-  "files": ["src/svg.d.ts"]
+  // "include": ["src/custom.d.ts"],
+  // "files": ["src/custom.d.ts"]
 }

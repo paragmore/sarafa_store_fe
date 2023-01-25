@@ -139,6 +139,7 @@ export const BodySecondary = Styled.p`
   font-size: ${(props) => addPixels(props.theme.fonts.bodySecondary.fontSize)};
   line-height: ${(props) =>
     addPixels(props.theme.fonts.bodySecondary.lineHeight)};
+    margin:2px
 `;
 
 export const BodyPrimary = Styled.p`
