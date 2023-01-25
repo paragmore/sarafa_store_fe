@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { useTheme } from "styled-components";
 import Button from "../../core/components/Button/Button";
+import PhoneIcon from "../../core/icons/svgs/PhoneIcon";
 import {
   BodyRegular,
   BodySecondary,
@@ -24,7 +25,7 @@ export const Footer = () => {
   const { storeInfo } = useStoreInfo();
   const theme = useTheme();
   useEffect(() => {
-    console.log('storeInfo',storeInfo)
+    console.log("storeInfo", storeInfo);
   }, [storeInfo]);
   return (
     <>
@@ -32,14 +33,26 @@ export const Footer = () => {
         <TitleTwo style={{ padding: 0, margin: 0 }}>{storeInfo.name}</TitleTwo>
         <BodySecondary>{storeInfo.address?.firstLine}</BodySecondary>
         <BodySecondary>
-          {
-            (storeInfo?.address?.city + ", " + 
-            storeInfo?.address?.state + "- " + storeInfo?.address?.pinCode)
-          }
+          {storeInfo?.address?.city +
+            ", " +
+            storeInfo?.address?.state +
+            "- " +
+            storeInfo?.address?.pinCode}
         </BodySecondary>
-        <Button buttonStyle="text">
-          {storeInfo?.phoneNumber}
-        </Button>
+        <div onClick={() => window.open(storeInfo?.phoneNumber)}>
+          <Button style={{ padding: "0px" }} buttonStyle="text">
+            <div
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                display: "flex",
+              }}
+            >
+              <PhoneIcon width={30} height={30} />
+              {storeInfo?.phoneNumber}
+            </div>
+          </Button>
+        </div>
       </FooterContainer>
     </>
   );

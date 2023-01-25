@@ -35,6 +35,8 @@ export const ButtonStyled = styled.button<ButtonDataProps>`
       ? "normal normal 600 20px/20px Work Sans"
       : props.buttonSize == "small"
       ? "normal normal 600 16px/20px Work Sans"
+      : props.buttonSize == "ultra-small"
+      ? "normal normal 600 12px/14px Work Sans"
       : "normal normal 600 12px/14px Work Sans"};
   color: ${(props) =>
     props.buttonStyle == "primary"
@@ -52,7 +54,11 @@ export const ButtonStyled = styled.button<ButtonDataProps>`
       : "white"};
   border-radius: 8px;
   padding: ${(props) =>
-    props.buttonSize == "large" ? "22px 30px" : "10px 16px"};
+    props.buttonSize == "large"
+      ? "22px 30px"
+      : props.buttonSize == "ultra-small"
+      ? "0px 5px"
+      : "10px 16px"};
   cursor: pointer;
   display: flex;
   justify-content: center;

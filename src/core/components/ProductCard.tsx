@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export const ProductCardContainer = styled.div<{ inScrolList?: boolean }>`
   background-color: ${(props) => props.theme.colors.gray.white};
-  margin: 7px;
+  margin: 3px;
   border-radius: 5px;
   border: 1px solid; 
   border-color: ${(props) => props.inScrolList ? props.theme.colors.gray.lightGray2: 'transparent'};
@@ -16,8 +16,8 @@ export const ProductCardContainer = styled.div<{ inScrolList?: boolean }>`
   flex-direction: column;
   padding: 10px;
   flex-grow: 1;
-  min-width: ${(props) => (props.inScrolList ? "145px" : "0px")};
-  min-height: ${(props) => (props.inScrolList ? "210px" : "0px")};
+  min-width: ${(props) => (props.inScrolList ? "150px" : "0px")};
+  min-height: ${(props) => (props.inScrolList ? "230px" : "0px")};
 `;
 
 export const ProductCardShimmer = () => {

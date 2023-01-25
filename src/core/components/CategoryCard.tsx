@@ -6,8 +6,8 @@ import { TitleFour } from "../themes/Typography";
 
 export const CategoryImageContainer = styled.div`
   border-radius: 10px;
-  width: 120px;
-  height: 70px;
+  width: 150px;
+  height: 75px;
   background-image: radial-gradient(
     ${(props) => props.theme.colors.brand.primary.main},
     ${(props) => props.theme.colors.brand.primary.light1},
@@ -36,8 +36,8 @@ export const CategoryContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 export const CategoryCard: React.FC<Category> = (props) => {
   const { id, image, name } = props;

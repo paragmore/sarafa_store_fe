@@ -12,10 +12,12 @@ import { ProductRepo } from "../../repos/ProductRepo";
 import { Grid } from "@material-ui/core";
 import { capitalizeFirstLetter } from "../../core/utils/StringHelper";
 import { useNavigate } from "react-router-dom";
+import Button from "../../core/components/Button/Button";
 
 export const SectionTitleContainer = styled.div`
   display: flex;
   padding-left: 10px;
+  padding-right: 10px;
   align-items: center;
 `;
 export const ProductsContainer = styled.div`
@@ -71,7 +73,9 @@ export const CatalogProductList: React.FC<{
             <TitleLarge style={{ flex: 1 }}>
               {capitalizeFirstLetter(catalogName)}
             </TitleLarge>
-            <TitleSmall onClick={routeToCatalogPage}>Show more</TitleSmall>
+            <Button buttonSize="ultra-small" buttonStyle="secondary">
+              <TitleSmall onClick={routeToCatalogPage}>Show more</TitleSmall>
+            </Button>
           </SectionTitleContainer>
           <Grid wrap="wrap" container style={{ width: "100%" }}>
             {catalogProducts.map((catalogProduct) => (
