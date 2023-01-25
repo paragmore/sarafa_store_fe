@@ -14,7 +14,7 @@ export const IconContainer = styled.div`
 
 export const Icon: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
   return (
-    <IconContainer>
+    <>
       {imageUrl && (
         <img
           style={{ borderRadius: 10 }}
@@ -25,6 +25,6 @@ export const Icon: React.FC<{ imageUrl: string }> = ({ imageUrl }) => {
         />
       )}
       {!imageUrl && <Shimmer width={50} height={50} />}
-    </IconContainer>
+    </>
   );
 };

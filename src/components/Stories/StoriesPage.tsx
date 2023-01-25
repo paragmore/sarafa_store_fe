@@ -7,7 +7,7 @@ export const StoriesPage = () => {
   const { state } = useLocation();
   console.log(state)
   return (
-    <div style={{ width: "100%", height: "100%", position:'fixed', zIndex:3 }}>
+    <div style={{ width: "100%", height: "100%", position:'fixed', zIndex:4 }}>
       <Stories
         loop
         keyboardNavigation

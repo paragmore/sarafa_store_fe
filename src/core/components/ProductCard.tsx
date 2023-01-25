@@ -16,8 +16,9 @@ export const ProductCardContainer = styled.div<{ inScrolList?: boolean }>`
   flex-direction: column;
   padding: 10px;
   flex-grow: 1;
-  min-width: ${(props) => (props.inScrolList ? "150px" : "0px")};
-  min-height: ${(props) => (props.inScrolList ? "230px" : "0px")};
+  min-width: ${(props) => (props.inScrolList ? "137px" : "0px")};
+  min-height: ${(props) => (props.inScrolList ? "230px" : "240px")};
+  display: flex;
 `;
 
 export const ProductCardShimmer = () => {
@@ -56,8 +57,11 @@ export const ProductCard: React.FC<{
             <img
               style={{
                 width: "100%",
+                height:'90%',
                 justifyContent: "center",
                 alignItems: "center",
+                flex:1,
+                objectFit:'cover'
               }}
               src={images[0]}
               alt=""

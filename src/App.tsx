@@ -48,8 +48,8 @@ function App() {
   }, [location, storeId]);
   return (
     <ThemeProvider theme={DEFAULT_THEME}>
-      <Header />
       <Router>
+      <Header />
         <Routes>
           <Route path="/home" element={<HomePage />} />
 
@@ -71,7 +71,7 @@ function App() {
         }}
         style={{
           position: "fixed",
-          zIndex: 4,
+          zIndex: 3,
           bottom: 0,
           width: "100%",
           height: "45px",
