@@ -15,33 +15,3 @@
     # Match any subdomain
     IsSubdomain = true 
   }
-
-[[headers]]
-  # Set the CORS header to allow all origins
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-
-[[headers]]
-  # Set the HSTS header to force HTTPS on all subdomains
-  for = "/*"
-  [headers.values]
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-
-[[headers]]
-  # Set the X-Frame-Options header to prevent clickjacking attacks
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-
-[[headers]]
-  # Set the X-XSS-Protection header to prevent XSS attacks
-  for = "/*"
-  [headers.values]
-    X-XSS-Protection = "1; mode=block"
-
-[[headers]]
-  # Set the X-Content-Type-Options header to prevent MIME sniffing
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
