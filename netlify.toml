@@ -1,17 +1,5 @@
 [build]
-  # Build command to generate the static files
   command = "npm run build"
-
+  base = "/"
   # Directory where the built files are stored
   publish = "build"
-
-[[redirects]]
-  # Redirect all subdomains to the root domain
-  from = "/*"
-  to = "/:splat"
-  status = 200
-  force = true
-  conditions = { 
-    # Match any subdomain
-    IsSubdomain = true 
-  }
